@@ -3,6 +3,7 @@ $(document).ready(initialize);
 function initialize(){
     appendEmail();
     appendPhone();
+    openMap();
     allowCollapseHamburger();
 }
 
@@ -27,13 +28,17 @@ function appendPhone(){
     $('#p').text(p);
 }
 
+function openMap(){
+    $(".map-section").trigger('click');
+}
+
 function allowCollapseHamburger() {
     $(document).click(function (event) {
         const clicktarget = $(event.target);
         const hamburger = $(".mobile-nav");
         const opened = hamburger.hasClass("active");
         if (opened && !clicktarget.hasClass("clearlist") && !clicktarget.hasClass("fa-bars") ) {
-            $(".mobile-nav").click();
+            hamburger.click();
         }
     });
 }
