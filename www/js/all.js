@@ -986,7 +986,7 @@ function initWorkFilter(){
                  $(this).trigger('click');
                  
                  $("html, body").animate({
-                     scrollTop: $("#portfolio").offset().top
+                     scrollTop: $("#projects").offset().top
                  });
                  
              }
