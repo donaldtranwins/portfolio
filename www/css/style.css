@@ -5152,6 +5152,7 @@ section:hover .small-item-carousel .owl-next{
 }
 .tpl-alt-tabs > li > a{
     text-decoration: none;
+    font-weight: 500;
     color: #a3a3a3;
     background: none !important;
     border: none !important;
@@ -5163,6 +5164,7 @@ section:hover .small-item-carousel .owl-next{
 }
 .tpl-alt-tabs > li > a:hover{
     background: none;
+    font-weight: 600;
     color: #111;
 }
 .tpl-alt-tabs li.active a,
@@ -5176,6 +5178,16 @@ section:hover .small-item-carousel .owl-next{
     margin-bottom: 12px;
     font-size: 48px;
     letter-spacing: 0;
+}
+.alt-tabs-icon div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+.alt-tabs-icon img {
+    vertical-align: inherit;
 }
 .tpl-minimal-tabs-cont{
 }
