@@ -79,18 +79,10 @@ function unbindScrollEventHandler() {
 // Starts the heartbeat to rotate the icon
 function beginRotateHeartbeat(){
     const $spinner = $('.spinner');
-    debugger;
-    var id = {};
-    if (!event.data){
-        window.setTimeout(startSpins,3333,$spinner);
-        $spinner.on('mouseenter', null, {intervalID: id.interval}, beginRotateHeartbeat);
-    } else {
-        window.clearInterval(id.interval);
-        $spinner.on('mouseleave',beginRotateHeartbeat);
-    }
+    window.setTimeout(startSpins,3333,$spinner);
     function startSpins(spinner){
         spinner.addClass('spinning');
-        id.interval = window.setInterval(animate, 5555, spinner);
+        window.setInterval(animate, 5555, spinner);
         function animate(spinner){
             spinner.hasClass('spinning') ? spinner.removeClass('spinning') : spinner.addClass('spinning');
         }
