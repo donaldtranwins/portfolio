@@ -7,6 +7,7 @@ function initialize(){
     allowCollapseHamburger();
 }
 
+// Appending Sensitive Information to prevent bot sniffing
 function appendEmail(){
     let e = "don";
     e += "ald";
@@ -32,10 +33,12 @@ function appendPhone(){
     $('#p').text(p).attr('href', `${t+=p}`);
 }
 
+// Pre-opening the map
 function openMap(){
     $(".map-section").trigger('click');
 }
 
+// Allowing user to close the hamburger button by clicking anywhere on screen
 function allowCollapseHamburger() {
     $(document).click(function (event) {
         const clicktarget = $(event.target);
@@ -46,11 +49,52 @@ function allowCollapseHamburger() {
         }
     });
 }
-function applyFlipHandler(){
-    const $card = $('.card');
-    $card.on('click',function(){
-        if (!$card.hasClass('flipped')){
-            $card.addClass('flipped');
-        }
-    })
+
+
+/**
+ * Handling Rotating Animation of the HTML/CSS icon.  This prevents the rotating animation
+ * from happening before the user scrolls down to the Skills section.
+ * This fixes the issue where if the animation happens after page load, then it will appear
+ * on the DOM without regards to any other animations (nullifying libraries: wow.js and animate.css)
+ */
+// Defining callback function that fires when the page is scrolled
+var scrollEventHandler = function() {
+    if(isScrolledIntoView(document.getElementsByClassName('spinner')[0])) {
+        unbindScrollEventHandler();
+        beginRotateHeartbeat();
+    }
+};
+// Checks if the DOM element has rendered in view of the viewport
+function isScrolledIntoView(domelement) {
+    const elemTop = domelement.getBoundingClientRect().top;
+    const elemBottom = domelement.getBoundingClientRect().bottom;
+
+    const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    return isVisible;
 }
+// Gets rid of the handler after the DOM element is viewable, so it doesn't keep needlessly firing
+function unbindScrollEventHandler() {
+    $(document).unbind('scroll', scrollEventHandler);
+}
+// Starts the heartbeat to rotate the icon
+function beginRotateHeartbeat(){
+    const $spinner = $('.spinner');
+    debugger;
+    var id = {};
+    if (!event.data){
+        window.setTimeout(startSpins,3333,$spinner);
+        $spinner.on('mouseenter', null, {intervalID: id.interval}, beginRotateHeartbeat);
+    } else {
+        window.clearInterval(id.interval);
+        $spinner.on('mouseleave',beginRotateHeartbeat);
+    }
+    function startSpins(spinner){
+        spinner.addClass('spinning');
+        id.interval = window.setInterval(animate, 5555, spinner);
+        function animate(spinner){
+            spinner.hasClass('spinning') ? spinner.removeClass('spinning') : spinner.addClass('spinning');
+        }
+    }
+}
+
+$(document).scroll(scrollEventHandler);

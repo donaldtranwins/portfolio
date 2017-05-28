@@ -5180,38 +5180,9 @@ section:hover .small-item-carousel .owl-next{
 .alt-tabs-icon > img {
     vertical-align: inherit;
 }
-/* Card Flip Start */
-.card{
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-.face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-.face.back {
-    display: block;
-}
-.card:hover .front{
-    transform: rotateY(-180deg);
-}
-.card:hover .back {
-    transform: rotateY(0deg);
-}
-.face {
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    transition: 2s;
-}
-.face.front {
-    transform: rotateY(0deg);
-}
-.face.back {
-    transform: rotateY(180deg);
-}
-/* Card Flip End */
+
+
+
 .tpl-minimal-tabs-cont{
 }
 
