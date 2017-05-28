@@ -1,0 +1,23 @@
+/* Card Flip Start */
+.spinner.spinning {
+    -webkit-transform: rotateY(-180deg);
+}
+.spinner {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 3s;
+}
+.spinner .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden ;
+}
+.spinner .front {
+    z-index: 1;
+}
+.spinner .back {
+    -webkit-transform: rotateY(-180deg);
+}
+/* Card Flip End */
