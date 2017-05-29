@@ -5152,7 +5152,7 @@ section:hover .small-item-carousel .owl-next{
 }
 .tpl-alt-tabs > li > a{
     text-decoration: none;
-    color: #a3a3a3;
+    color: #909090;
     background: none !important;
     border: none !important;
     
@@ -5163,13 +5163,13 @@ section:hover .small-item-carousel .owl-next{
 }
 .tpl-alt-tabs > li > a:hover{
     background: none;
-    color: #000;
+    color: #EEE;
 }
 .tpl-alt-tabs li.active a,
 .tpl-alt-tabs li.active a:hover,
 .tpl-alt-tabs li.active a:focus{
     cursor: default;
-    color: #111;
+    color: #DDD;
 }
 .alt-tabs-icon{
     display: block;
