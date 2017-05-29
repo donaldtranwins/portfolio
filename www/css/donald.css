@@ -1,0 +1,76 @@
+/* Card Flip Start */
+.spinner.spinning {
+    -webkit-transform: rotateY(-180deg);
+}
+.spinner {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 3s;
+}
+.spinner .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden ;
+}
+.spinner .front {
+    z-index: 1;
+}
+.spinner .back {
+    -webkit-transform: rotateY(-180deg);
+}
+/* Card Flip End */
+
+/* Hero Text */
+.home-text,
+.main-nav {
+    text-shadow: 3px 3px 4px #000, -1px -1px 1px #000;
+}
+.home-text * {
+    top: -12%;
+}
+
+/* Hover Effect Start  |delete space -> */
+.tpl-alt-tabs a {
+    color: #6f8686;
+    text-shadow: 0 0 1px rgba(111,134,134,0.3);
+}
+
+.tpl-alt-tabs a p::before {
+    color: #fff;
+    content: attr(data-hover);
+    position: absolute;
+    opacity: 0;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    -moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    -webkit-transition: -webkit-transform 1s, opacity 0.3s;
+    -moz-transition: -moz-transform 1s, opacity 0.3s;
+    transition: transform .2s, opacity 0.3s;
+    pointer-events: none;
+}
+
+.tpl-alt-tabs a:hover p::before,
+.tpl-alt-tabs a:focus p::before {
+    -webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    -moz-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    opacity: 1;
+}
+/* Hover Effect End */
+
+/* Shows only 4 skills at a time */
+@media (min-width: 992px) {
+    #skills .container {
+        width: 970px;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    @media (min-width: 1200px){
+        #skills .container {
+            width: 1170px;
+        }
+    }
+}

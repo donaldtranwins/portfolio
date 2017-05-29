@@ -1,11 +1,19 @@
 $(document).ready(initialize);
 
 function initialize(){
+    // applyHover(); //not working
     ensureAllLinksOpenNewWindow();
     appendEmail();
     appendPhone();
     openMap();
     allowCollapseHamburger();
+}
+
+// Applies data-hover attr to all p elements in Skills, for CSS animation
+function applyHover(){
+    $('.tpl-alt-tabs p').each(function(){
+        $(this).attr('data-hover',$(this).text())
+    });
 }
 
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
