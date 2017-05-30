@@ -3,8 +3,8 @@ $(document).ready(initialize);
 function initialize(){
     // applyHover(); //not working
     applyFlipIn();
-    // applySlideIn();
     ensureAllLinksOpenNewWindow();
+    enableMagnific();
     appendEmail();
     appendPhone();
     openMap();
@@ -40,6 +40,41 @@ function applyFlipIn(){
 function ensureAllLinksOpenNewWindow(){
     const $links = $("a[href^='http']");
     $links.attr('target','_blank');
+}
+
+function enableMagnific(){
+    var over;
+    $('.magnific').magnificPopup({
+        type: 'ajax',
+        ajax: {
+            settings: null,
+            cursor: 'mfp-ajax-cur',
+            tError: '<a href="%url%">The content</a> could not be loaded.',
+        },
+        callbacks: {
+            parseAjax: function(response){
+                console.log('Ajax Content Loaded:',response)
+            },
+            ajaxContentAdded: function(){
+                console.log(this.content)
+            },
+            open: function(){
+                over = $('body').prop('overflow');
+                console.log('popup opened', over);
+                $('body').prop('overflow','hidden');
+            },
+            afterClose: function(){
+                console.log("popup closed", over)
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        midClick: false,
+        fixedContentPos: true,
+        fixedBgPos: true,
+        closeOnBgClick: false
+    })
 }
 
 // Appending Sensitive Information to prevent bot sniffing
@@ -122,5 +157,6 @@ function beginRotateHeartbeat(){
         }
     }
 }
+
 
 $(document).scroll(scrollEventHandler);

@@ -137,6 +137,51 @@
 }
 /* Filter Effect End */
 
+/* Apps start */
+.work-descr {
+    font-size: 1.5em;
+}
+
+.work-intro{
+    height: 168px;
+    display: none;
+    text-decoration: none;
+    /*bottom: -294px;*/
+    /*opacity: 0;*/
+    /*visibility: hidden;*/
+    /*-webkit-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);*/
+    /*-moz-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);*/
+    /*-o-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);*/
+    /*-ms-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);*/
+    /*transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);*/
+}
+.work-item .work-img:after{
+    -webkit-transition: all 0.54s cubic-bezier(0.300, 0.100, 0.580, 1.000);
+    -moz-transition: all 0.54s cubic-bezier(0.300, 0.100, 0.580, 1.000);
+    -o-transition: all 0.54s cubic-bezier(0.300, 0.100, 0.580, 1.000);
+    -ms-transition: all 0.54s cubic-bezier(0.300, 0.100, 0.580, 1.000);
+    transition: all 0.54s cubic-bezier(0.300, 0.100, 0.580, 1.000);
+}
+.work-item:hover p {
+    font-weight: 700;
+}
+
+.work-item:hover .work-intro {
+    display: block;
+    /*visibility: visible;*/
+    bottom: auto;
+    top: 50%;
+    color: #fff;
+
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    z-index: 3;
+}
+/* Apps end */
+
+
 /* Shows only 4 skills at a time */
 @media (min-width: 992px) {
     #skills .container {
