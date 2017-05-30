@@ -2,6 +2,8 @@ $(document).ready(initialize);
 
 function initialize(){
     // applyHover(); //not working
+    applyFlipIn();
+    // applySlideIn();
     ensureAllLinksOpenNewWindow();
     appendEmail();
     appendPhone();
@@ -9,11 +11,39 @@ function initialize(){
     allowCollapseHamburger();
 }
 
-// Applies data-hover attr to all p elements in Skills, for CSS animation
+// Applies data-hover attribute to all p elements in Skills, for CSS animation
 function applyHover(){
     $('.tpl-alt-tabs p').each(function(){
         $(this).attr('data-hover',$(this).text())
     });
+}
+
+function applyFlipIn(){
+    var $ul = $('.tpl-alt-tabs');
+    $ul.each(function(){
+        var $li = $(this).children();
+        $li.each(function(index){
+            $(this).attr({
+                class: "wow flipInX",
+                "data-wow-delay": "0."+(index+2)+"s",
+                "data-wow-duration": ".4s"
+            }).find('p').attr({
+                class: "wow slideInDown",
+                'data-wow-delay': "1.4s",
+                'data-wow-duration': ".6s"
+            });
+        })
+    });
+}
+
+function applySlideIn(){
+    $('.tpl-alt-tabs p').each(function(){
+        $(this).attr({
+            class: "wow slideInDown",
+            'data-wow-delay': "1.4s",
+            'data-wow-duration': ".6s"
+        })
+    })
 }
 
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
