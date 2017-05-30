@@ -322,7 +322,8 @@
             gallery: {
                 enabled: true
             },
-            mainClass: "mfp-fade"
+            mainClass: "mfp-fade",
+            type: "ajax"
         });
         
         // Works Item Lightbox	

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/donald.css">
+    <link rel="stylesheet" href="css/donald-ajax.css">
 
 </head>
 <body class="appear-animate">
@@ -36,7 +37,7 @@
 
     <!-- Home Section -->
     <section class="home-section bg-dark-alfa-30 parallax-2" data-background="images/reflections.jpg" id="home">
-    <!--<section class="home-section bg-dark-alfa-30 parallax-2" data-background="http://i.imgur.com/O7ENJ1K.jpg" id="home">-->
+        <!--<section class="home-section bg-dark-alfa-30 parallax-2" data-background="http://i.imgur.com/O7ENJ1K.jpg" id="home">-->
         <div class="js-height-full container">
 
             <!-- Hero Content -->
@@ -84,7 +85,7 @@
                     <li class="active"><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#applications">Applications</a></li>
                     <li><a href="#contact">Contacts</a></li>
 
                     <li><a href="intro.html">All Demos</a></li>
@@ -144,7 +145,7 @@
             </h2>
 
             <!-- Nav tabs -->
-            <h3 class="section-title font-alt mb-70 mb-sm-40 hs-line-3 wow slideInUp">Back End</h3>
+            <h3 class="section-title font-alt mb-70 mb-sm-40 hs-line-3 wow fadeIn" data-wow-delay=".3s" data-wow-duration="1.2s">Back End</h3>
             <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0">
                 <li>
                     <a href="https://mariadb.org/about/">
@@ -196,7 +197,7 @@
                     </a>
                 </li>
             </ul>
-            <h3 class="section-title font-alt mb-70 mb-sm-40 wow slideInUp hs-line-3">Front End</h3>
+            <h3 class="section-title font-alt mb-70 mb-sm-40 hs-line-3 wow fadeIn" data-wow-delay=".3s" data-wow-duration="1.2s">Front End</h3>
             <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0">
                 <li>
                     <a href="http://eloquentjavascript.net/">
@@ -212,6 +213,14 @@
                             <img src="images/skills/jquery-original.png"/>
                         </div>
                         <p>jQuery</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://getbootstrap.com/">
+                        <div class="alt-tabs-icon">
+                            <img src="images/skills/bootstrap-plain.png"/>
+                        </div>
+                        <p>Bootstrap</p>
                     </a>
                 </li>
                 <li>
@@ -231,14 +240,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://getbootstrap.com/">
-                        <div class="alt-tabs-icon">
-                            <img src="images/skills/bootstrap-plain.png"/>
-                        </div>
-                        <p>Bootstrap</p>
-                    </a>
-                </li>
-                <li>
                     <a href="http://redux.js.org/docs/basics/UsageWithReact.html">
                         <div class="alt-tabs-icon">
                             <img src="images/skills/react-redux.png"/>
@@ -255,14 +256,14 @@
                     </a>
                 </li>
             </ul>
-            <h3 class="section-title font-alt mb-70 mb-sm-40 wow slideInUp hs-line-3">Tools</h3>
+            <h3 class="section-title font-alt mb-70 mb-sm-40 hs-line-3 wow fadeIn" data-wow-delay=".3s" data-wow-duration="1.2s">Tools</h3>
             <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0">
                 <li>
                     <a href="https://developer.chrome.com/devtools">
                         <div class="alt-tabs-icon">
                             <img src="images/skills/chrome-original.png"/>
                         </div>
-                        <p>Chrome Dev Tools</p>
+                        <p>Chrome DevTools</p>
                     </a>
                 </li>
                 <li>
@@ -313,11 +314,11 @@
     <!-- End Skills Section -->
 
     <!-- Portfolio Section -->
-    <section class="page-section pb-0" id="projects">
+    <section class="page-section pb-0" id="applications">
         <div class="relative">
 
             <h2 class="section-title font-alt mb-70 mb-sm-40 wow slideInUp" data-wow-delay=".3s" data-wow-duration="1s">
-                Projects
+                Applications
             </h2>
 
             <div class="container">
@@ -339,19 +340,19 @@
 
             <!-- Works Filter -->
             <div class="works-filter font-alt align-center wow slideInUp" data-wow-delay=".5s" data-wow-duration="1s">
-                <a href="#" class="filter active" data-filter="*">All works</a>
-                <a href="#branding" class="filter" data-filter=".branding">Branding</a>
-                <a href="#design" class="filter" data-filter=".design">Design</a>
-                <a href="#photography" class="filter" data-filter=".photography">Photography</a>
+                <a href="#" class="filter active" data-filter="*">All Apps</a>
+                <a href="#team" class="filter" data-filter=".team">Team</a>
+                <a href="#individual" class="filter" data-filter=".individual">Individual</a>
             </div>
             <!-- End Works Filter -->
 
-            <!-- Works Grid -->
+
+            <!-- Works Grid original -->
             <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
 
                 <!-- Work Item (Lightbox) -->
-                <li class="work-item mix photography">
-                    <a href="images/portfolio/full-project-1.jpg" class="work-lightbox-link mfp-image">
+                <li class="work-item mix team">
+                    <a href="blog-classic-fullwidth.html" class="work-lightbox-link mfp-image">
                         <div class="work-img">
                             <img src="images/portfolio/projects-1.jpg" alt="Work" />
                         </div>
@@ -366,7 +367,7 @@
                 <!-- End Work Item -->
 
                 <!-- Work Item (External Page) -->
-                <li class="work-item mix branding design">
+                <li class="work-item mix team individual">
                     <a href="portfolio-single-1.html" class="work-ext-link">
                         <div class="work-img">
                             <img class="work-img" src="images/portfolio/projects-2.jpg" alt="Work" />
@@ -387,23 +388,24 @@
                 <!-- End Work Item -->
 
                 <!-- Work Item (External Page) -->
-                <li class="work-item mix branding">
-                    <a href="portfolio-single-1.html" class="work-ext-link">
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/projects-3.jpg" alt="Work" />
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Boy in T-shirt</h3>
-                            <div class="work-descr">
-                                External Page
-                            </div>
-                        </div>
-                    </a>
+                <li class="work-item mix team">
+                    <figure class="effect-zoe">
+                        <img src="images/portfolio/projects-3.jpg" alt="img25" class="work-img"/>
+                        <figcaption class="work-intro">
+                            <h2>Creative <span>Zoe</span></h2>
+                            <p class="icon-links">
+                                <a href="#"><span class="icon-heart"></span></a>
+                                <a href="#"><span class="icon-eye"></span></a>
+                                <a href="#"><span class="icon-paper-clip"></span></a>
+                            </p>
+                            <p class="description work-descr">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p>
+                        </figcaption>
+                    </figure>
                 </li>
                 <!-- End Work Item -->
 
                 <!-- Work Item (External Page) -->
-                <li class="work-item mix design photography">
+                <li class="work-item mix individual">
                     <a href="portfolio-single-1.html" class="work-ext-link">
                         <div class="work-img">
                             <img class="work-img" src="images/portfolio/projects-4.jpg" alt="Work" />
@@ -419,7 +421,7 @@
                 <!-- End Work Item -->
 
                 <!-- Work Item (External Page) -->
-                <li class="work-item mix design">
+                <li class="work-item mix team">
                     <a href="portfolio-single-1.html" class="work-ext-link">
                         <div class="work-img">
                             <img class="work-img" src="images/portfolio/projects-5.jpg" alt="Work" />
@@ -435,7 +437,7 @@
                 <!-- End Work Item -->
 
                 <!-- Work Item (Lightbox) -->
-                <li class="work-item mix design branding">
+                <li class="work-item mix individual">
                     <a href="images/portfolio/full-project-3.jpg" class="work-lightbox-link mfp-image">
                         <div class="work-img">
                             <img src="images/portfolio/projects-6.jpg" alt="Work" />
@@ -585,14 +587,16 @@
                         <div class="section-icon">
                             <span class="icon-quote"></span>
                         </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
+                        <!-- Section Title --><h3 class="small-title font-alt">Don is one of the best people I've worked with during my time at First American Title. </h3>
                         <blockquote class="testimonial white">
                             <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
+                                I came to know Don very well during the time that I mentored him during his first year, and came to greatly appreciate his uncanny ability to master technology, his knack for finding the most efficient way to tweak software to accomplish goals, and his positive, generous, helpful attitude towards all his colleagues.
+                            </p>
+                            <p>
+                                His natural flair for technology, spot-on ability to discover underlying issues, and invariably cheerful 'can-do' attitude make him a very strong QA analyst, a wonderful colleague, and an invaluable asset to any organization that he's a part of!
                             </p>
                             <footer class="testimonial-author">
-                                John Doe, doodle inc.
+                                Aparna Suresh, Lead Business Systems Analyst
                             </footer>
                         </blockquote>
                     </div>
@@ -610,39 +614,16 @@
                         <div class="section-icon">
                             <span class="icon-quote"></span>
                         </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
+                        <!-- Section Title --><h3 class="small-title font-alt">From the start of class until the end, Donald was like a sponge for knowledge.</h3>
                         <blockquote class="testimonial white">
                             <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
+                                I had the pleasure of meeting Donald on the first day of our accelerated developer program. He grasped concepts fast and, not only was able to learn but to share his knowledge with others. He also pushed me as a fellow developer as he would come up with innovative ways to break my code which helped me become better as I was able to take care of problems I would not have foresaw.
                             </p>
-                            <footer class="testimonial-author">
-                                John Doe, doodle inc.
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slide Item -->
-
-        <!-- Slide Item -->
-        <div>
-            <div class="container relative">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 align-center">
-                        <!-- Section Icon -->
-                        <div class="section-icon">
-                            <span class="icon-quote"></span>
-                        </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
-                        <blockquote class="testimonial white">
                             <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
+                                I worked with him on multiple group projects and, beyond his dedication was a great person to work with. Could not be more proud to know him and, would definitely enjoy working with him in the future.
                             </p>
                             <footer class="testimonial-author">
-                                John Doe, doodle inc.
+                                Erik Nuber, Art Director
                             </footer>
                         </blockquote>
                     </div>
@@ -682,10 +663,13 @@
     <section class="page-section" id="contact">
         <div class="container relative">
 
+            <h2 class="section-title font-alt mb-70 mb-sm-40 wow slideInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                Reach Out
+            </h2>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-text align-center mb-70 mb-xs-40">
-                        Curabitur eu adipiscing lacus, a iaculis diam. Nullam placerat blandit auctor. Nulla accumsan ipsum et nibh rhoncus, eget tempus sapien ultricies. Donec mollis lorem vehicula.
+
                     </div>
                 </div>
             </div>
@@ -702,7 +686,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="ci-title font-alt">
-                                    Call Us
+                                    Call/Text
                                 </div>
                                 <div class="ci-text">
                                     <a id='p' href="">Loading...</a>
@@ -726,6 +710,22 @@
                             </div>
                         </div>
                         <!-- End Email -->
+
+                        <!-- Résumé -->
+                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                            <div class="contact-item">
+                                <div class="ci-icon">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                </div>
+                                <div class="ci-title font-alt">
+                                    Resume
+                                </div>
+                                <div class="ci-text">
+                                    <a href="">please@enable.javascript</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Résumé -->
 
                     </div>
                 </div>
@@ -800,7 +800,7 @@
     <!-- End Contact Section -->
 
 
-    <!-- Foter -->
+    <!-- Footer -->
     <footer class="page-section bg-gray-lighter footer pb-60">
         <div class="container">
 
@@ -881,6 +881,7 @@
 <script type="text/javascript" src="js/contact-form.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
 <script type="text/javascript" src="js/donald.js"></script>
+<script type="text/javascript" src="js/donald-ajax.js"></script>
 <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
 
 </body>

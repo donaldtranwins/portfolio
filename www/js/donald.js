@@ -36,16 +36,6 @@ function applyFlipIn(){
     });
 }
 
-function applySlideIn(){
-    $('.tpl-alt-tabs p').each(function(){
-        $(this).attr({
-            class: "wow slideInDown",
-            'data-wow-delay': "1.4s",
-            'data-wow-duration': ".6s"
-        })
-    })
-}
-
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
 function ensureAllLinksOpenNewWindow(){
     const $links = $("a[href^='http']");

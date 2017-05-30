@@ -3433,9 +3433,9 @@ a.logo:hover{
     /*top: 50%;*/
     color: #fff;
     
-    -webkit-transform: translateY(-99px);
-    -moz-transform: translateY(-99px);
-    transform: translateY(-99px);    
+    -webkit-transform: translateY(-195px);
+    -moz-transform: translateY(-195px);
+    transform: translateY(-195px);
     
     z-index: 3; 
 }
