@@ -30,6 +30,9 @@
 .home-text * {
     top: -12%;
 }
+.name {
+    font-size: 5em;
+}
 .main-nav.dark .inner-nav ul > li > a:hover,
 .main-nav.dark .inner-nav ul > li > a:focus {
     color: #EEE;
@@ -138,6 +141,13 @@
 /* Filter Effect End */
 
 /* Apps start */
+#work-grid > li:nth-child(2) > a > p {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .work-descr {
     font-size: 1.5em;
 }
