@@ -7,7 +7,7 @@ function initialize(){
     enableMagnific();
     appendEmail();
     appendPhone();
-    openMap();
+    // openMap(); // removed map slideout
     allowCollapseHamburger();
 }
 

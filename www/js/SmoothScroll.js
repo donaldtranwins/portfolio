@@ -13,7 +13,7 @@ var defaultOptions = {
     // Scrolling Core
     frameRate        : 150, // [Hz]
     animationTime    : 500, // [px]
-    stepSize         : 150, // [px]
+    stepSize         : 200, // [px]
 
     // Pulse (less tweakable)
     // ratio of "tail" to "acceleration"
@@ -27,7 +27,7 @@ var defaultOptions = {
 
     // Keyboard Settings
     keyboardSupport   : true,  // option
-    arrowScroll       : 50,     // [px]
+    arrowScroll       : 100,     // [px]
 
     // Other
     touchpadSupport   : true,
