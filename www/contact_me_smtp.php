@@ -1,7 +1,7 @@
 <?php
 if($_POST)
 {
-    require_once ('credentials.php');
+    require_once ('./credentials.php');
     $to_Email       = $email; // Replace with recipient email address
 	$subject        = 'Message from website '.$_SERVER['SERVER_NAME']; //Subject line for emails
     
@@ -63,7 +63,7 @@ if($_POST)
     }
     
     //proceed with PHP email.
-    include("php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
+    include("./php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
 
 	$mail = new PHPMailer();
 	 

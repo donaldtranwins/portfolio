@@ -206,30 +206,13 @@ function contactFormHandler(){
             $submit.addClass('disabled')
                 .text('Sending... ')
                 .append(icon_sending);
+            setTimeout(checkFail,10000);
             //Ajax post data to server
-            $.post('./contact_me_smtp.php', post_data, function(response){
+            $.post('../contact_me_smtp.php', post_data, function(response){
                 //load json data from server and output message
                 if (response.type === 'error' && response.error === 'server') {
-                    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-                    var emailURL = $('#e').parent().parent().parent();
-
                     var output = '<div class="error">' + response.text + '</div>';
-                    $submit.toggleClass('submit_btn_dead btn-dangerous animated hinge')
-                        .text('Service Unavailable ')
-                        .attr('type','button')
-                        .append(icon_fail)
-                        .one(animationEnd, function(){
-                            $('#contact_form .clearfix').remove();
-                            emailURL.addClass('animated rubberBand')
-                                .one(animationEnd,function(){
-                                    emailURL.removeClass('animated rubberBand')
-                                        .addClass('animated tada');
-                                })
-                    });
-                    $submit.off('click');
-                    $("#contact_form input, #contact_form textarea").off('keyup');
-
-
+                    sendFailed();
                 }
                 else if (response.type === 'error' && response.error === 'client') {
                     output = '<div class="error">' + response.text + '</div>';
@@ -253,6 +236,30 @@ function contactFormHandler(){
 
         return false;
     });
+    function sendFailed(){
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        var emailURL = $('#e').parent().parent().parent();
+
+        $submit.toggleClass('submit_btn_dead btn-dangerous animated hinge')
+            .text('Service Unavailable ')
+            .attr('type','button')
+            .append(icon_fail)
+            .one(animationEnd, function(){
+                $('#contact_form .clearfix').remove();
+                emailURL.addClass('animated rubberBand')
+                    .one(animationEnd,function(){
+                        emailURL.removeClass('animated rubberBand')
+                            .addClass('animated tada');
+                    })
+            })
+            .off('click');
+        $("#contact_form input, #contact_form textarea").off('keyup');
+    }
+    function checkFail(){
+        if ($submit.text() === "Sending... "){
+            sendFailed();
+        }
+    }
 
     //reset previously set border colors and hide all message on .keyup()
     $("#contact_form input, #contact_form textarea").keyup(function(){
