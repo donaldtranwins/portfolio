@@ -61,10 +61,10 @@ if($_POST)
 	
 	if(!$sentMail)
 	{
-		$output = json_encode(array('type'=>'error', 'text' => 'Mail could not be sent. Please try again later.'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Message could not be sent.  Try clicking the link above.'));
 		die($output);
 	}else{
-		$output = json_encode(array('type'=>'message', 'text' => 'Hi '.$user_Name .'! Thank you for your email'));
+        $output = json_encode(array('type'=>'message', 'text' => 'Message sent successfully.  Thanks '.$user_Name .'!  I\'ll reply directly to '.$user_Email.'.'));
 		die($output);
 	}
 }

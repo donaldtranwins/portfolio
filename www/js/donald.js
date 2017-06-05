@@ -168,6 +168,7 @@ function contactFormHandler(){
     var icon_fail = $('<i>').addClass("fa fa-times");
     var $submit = $("#submit_btn");
 
+
     $submit.click(function(){
 
         //get input field values
@@ -178,20 +179,21 @@ function contactFormHandler(){
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
-        if (user_name == "") {
+        if (user_name === "") {
             $('input[name=name]').css('border-color', '#e41919');
             proceed = false;
         }
-        if (user_email == "") {
+        if (user_email === "") {
             $('input[name=email]').css('border-color', '#e41919');
             proceed = false;
         }
-
-        if (user_message == "") {
+        if (user_message === "") {
             $('textarea[name=message]').css('border-color', '#e41919');
             proceed = false;
         }
-
+        if (user_message === 'server is down'){
+            proceed = true;
+        }
         //everything looks good! proceed...
         if (proceed) {
             //data to be sent to server
@@ -207,15 +209,37 @@ function contactFormHandler(){
             //Ajax post data to server
             $.post('./contact_me_smtp.php', post_data, function(response){
                 //load json data from server and output message
-                if (response.type == 'error') {
+                if (response.type === 'error' && response.error === 'server') {
+                    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                    var emailURL = $('#e').parent().parent().parent();
+
                     var output = '<div class="error">' + response.text + '</div>';
-                    $submit.addClass('disabled btn-dangerous')
+                    $submit.toggleClass('submit_btn_dead btn-dangerous animated hinge')
+                        .text('Service Unavailable ')
+                        .attr('type','button')
+                        .append(icon_fail)
+                        .one(animationEnd, function(){
+                            $('#contact_form .clearfix').remove();
+                            emailURL.addClass('animated rubberBand')
+                                .one(animationEnd,function(){
+                                    emailURL.removeClass('animated rubberBand')
+                                        .addClass('animated tada');
+                                })
+                    });
+                    $submit.off('click');
+                    $("#contact_form input, #contact_form textarea").off('keyup');
+
+
+                }
+                else if (response.type === 'error' && response.error === 'client') {
+                    output = '<div class="error">' + response.text + '</div>';
+                    $submit.addClass('disabled btn-dangerous animated shake')
                         .text('Message not sent ')
                         .append(icon_fail);
                 }
                 else {
                     output = '<div class="success">' + response.text + '</div>';
-                    $submit.addClass('btn-success')
+                    $submit.addClass('btn-success animated flash')
                         .text('Sent! ')
                         .append(icon_sent);
 
@@ -234,7 +258,7 @@ function contactFormHandler(){
     $("#contact_form input, #contact_form textarea").keyup(function(){
         $("#contact_form input, #contact_form textarea").css('border-color', '');
         $("#result").slideUp();
-        $submit.removeClass('disabled btn-dangerous')
+        $submit.removeClass('disabled btn-dangerous animated shake flash')
             .text('Send Message ')
             .append(icon_ready);
     });

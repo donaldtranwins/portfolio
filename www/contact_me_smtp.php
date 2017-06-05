@@ -28,7 +28,7 @@ if($_POST)
     //check $_POST vars are set, exit if any missing
     if(!isset($_POST["userName"]) || !isset($_POST["userEmail"]) || !isset($_POST["userMessage"]))
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Input fields are empty!'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Don\'t go pushing buttons without typing anything in!', 'error' => 'client'));
         die($output);
     }
 
@@ -41,19 +41,24 @@ if($_POST)
     $user_Message = str_replace("&#39;", "'", $user_Message);
     
     //additional php validation
+    if($user_Message === 'server is down')
+    {
+        $output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above. (this animation only displays when gmail SMTP service is down)', 'error' => 'server'));
+        die($output);
+    }
     if(strlen($user_Name)<4) // If length is less than 4 it will throw an HTTP error.
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Name is too short.'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Name is too short.', 'error' => 'client'));
         die($output);
     }
     if(!filter_var($user_Email, FILTER_VALIDATE_EMAIL)) //email validation
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email.'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email.', 'error' => 'client'));
         die($output);
     }
     if(strlen($user_Message)<5) //check empty message
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Message is too short.  Don\'t be shy, fill out that message box!'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Message is too short.  Don\'t be shy, fill out that message box!', 'error' => 'client'));
         die($output);
     }
     
@@ -83,7 +88,7 @@ if($_POST)
 
 	if(!$mail->send()) {
 
-		$output = json_encode(array('type'=>'error', 'text' => 'Message could not be sent.  Mailer Error: ' . $mail->ErrorInfo));
+		$output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above.', 'error' => 'server'));
 		die($output);
 
 	} else {

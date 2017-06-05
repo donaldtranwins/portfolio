@@ -197,6 +197,20 @@
     border-color: #d43f3a !important;
     opacity: 1 !important;
 }
+.hinge {
+    cursor: not-allowed !important;
+    -webkit-animation-duration: 4s;
+    -moz-animation-duration: 4s;
+    -o-animation-duration: 4s;
+    animation-duration: 4s;
+}
+.rubberBand,
+.tada {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+}
 
 /* Shows only 4 skills at a time */
 @media (min-width: 992px) {
