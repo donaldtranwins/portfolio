@@ -211,11 +211,10 @@ function contactFormHandler(){
             $.post('./contact_me_smtp.php', post_data, function(response){
                 //load json data from server and output message
                 if (response.type === 'error' && response.error === 'server') {
-                    var output = '<div class="error">' + response.text + '</div>';
                     sendFailed();
                 }
                 else if (response.type === 'error' && response.error === 'client') {
-                    output = '<div class="error">' + response.text + '</div>';
+                    var output = '<div class="error">' + response.text + '</div>';
                     $submit.addClass('disabled btn-dangerous animated shake')
                         .text('Message not sent ')
                         .append(icon_fail);
@@ -246,6 +245,7 @@ function contactFormHandler(){
             .append(icon_fail)
             .one(animationEnd, function(){
                 $('#contact_form .clearfix').remove();
+                $("#result").hide().html('<div class="error">Sorry, this service is unavailable.  Please use the link above.</div>').slideDown();
                 emailURL.addClass('animated rubberBand')
                     .one(animationEnd,function(){
                         emailURL.removeClass('animated rubberBand')
@@ -254,7 +254,6 @@ function contactFormHandler(){
             })
             .off('click');
         $("#contact_form input, #contact_form textarea").off('keyup');
-        $("#result").hide().html('<div class="error">Sorry, this service is unavailable.  Please use the link above.</div>').slideDown();
     }
     function checkFail(){
         if ($submit.text() === "Sending... "){
