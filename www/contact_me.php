@@ -1,7 +1,9 @@
 <?php
 if($_POST)
 {
-	$to_Email   	= "support@bestlooker.pro"; //Replace with recipient email address
+    require_once ('credentials.php');
+
+    $to_Email   	= $email; //Replace with recipient email address
 	$subject        = 'Message from website '.$_SERVER['SERVER_NAME']; //Subject line for emails
 	
 	
@@ -36,17 +38,17 @@ if($_POST)
 	//additional php validation
 	if(strlen($user_Name)<4) // If length is less than 4 it will throw an HTTP error.
 	{
-		$output = json_encode(array('type'=>'error', 'text' => 'Name is too short or empty!'));
+		$output = json_encode(array('type'=>'error', 'text' => 'Name is too short.'));
 		die($output);
 	}
 	if(!filter_var($user_Email, FILTER_VALIDATE_EMAIL)) //email validation
 	{
-		$output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email!'));
+		$output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email.'));
 		die($output);
 	}
 	if(strlen($user_Message)<5) //check emtpy message
 	{
-		$output = json_encode(array('type'=>'error', 'text' => 'Too short message! Please enter something.'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Message is too short.  Don\'t be shy, say more!'));
 		die($output);
 	}
 	
@@ -59,7 +61,7 @@ if($_POST)
 	
 	if(!$sentMail)
 	{
-		$output = json_encode(array('type'=>'error', 'text' => 'Could not send mail! Please check your PHP mail configuration.'));
+		$output = json_encode(array('type'=>'error', 'text' => 'Mail could not be sent. Please try again later.'));
 		die($output);
 	}else{
 		$output = json_encode(array('type'=>'message', 'text' => 'Hi '.$user_Name .'! Thank you for your email'));

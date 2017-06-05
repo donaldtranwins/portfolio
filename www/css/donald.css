@@ -191,6 +191,12 @@
 }
 /* Apps end */
 
+.btn-dangerous {
+    color: #fff;
+    background-color: #d9534f !important;
+    border-color: #d43f3a !important;
+    opacity: 1 !important;
+}
 
 /* Shows only 4 skills at a time */
 @media (min-width: 992px) {

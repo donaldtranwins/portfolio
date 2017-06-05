@@ -1,14 +1,15 @@
 <?php
 if($_POST)
 {
-    $to_Email       = "support@bestlooker.pro"; // Replace with recipient email address
+    require_once ('credentials.php');
+    $to_Email       = $email; // Replace with recipient email address
 	$subject        = 'Message from website '.$_SERVER['SERVER_NAME']; //Subject line for emails
     
-    $host           = "smtp.mail.yahoo.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
-    $username       = "your.email@yahoo.com"; //For example, your.email@yahoo.com
-    $password       = "1234567"; // Your password
-    $SMTPSecure     = "ssl"; // For example, ssl
-    $port           = 465; // For example, 465
+    $host           = $mailHost; // Your SMTP server. For example, smtp.mail.yahoo.com
+    $username       = $user; //For example, your.email@yahoo.com
+    $password       = $pw; // Your password
+    $SMTPSecure     = $secure; // For example, ssl
+    $port           = $num; // For example, 465
     
     
     //check if its an ajax request, exit if not
@@ -42,23 +43,23 @@ if($_POST)
     //additional php validation
     if(strlen($user_Name)<4) // If length is less than 4 it will throw an HTTP error.
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Name is too short or empty!'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Name is too short.'));
         die($output);
     }
     if(!filter_var($user_Email, FILTER_VALIDATE_EMAIL)) //email validation
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email!'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Please enter a valid email.'));
         die($output);
     }
-    if(strlen($user_Message)<5) //check emtpy message
+    if(strlen($user_Message)<5) //check empty message
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Too short message! Please enter something.'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Message is too short.  Don\'t be shy, fill out that message box!'));
         die($output);
     }
     
     //proceed with PHP email.
     include("php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
- 
+
 	$mail = new PHPMailer();
 	 
 	$mail->IsSMTP();
@@ -82,11 +83,11 @@ if($_POST)
 
 	if(!$mail->send()) {
 
-		$output = json_encode(array('type'=>'error', 'text' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo));
+		$output = json_encode(array('type'=>'error', 'text' => 'Message could not be sent.  Mailer Error: ' . $mail->ErrorInfo));
 		die($output);
 
 	} else {
-	    $output = json_encode(array('type'=>'message', 'text' => 'Hi '.$user_Name .'! Thank you for your email'));
+	    $output = json_encode(array('type'=>'message', 'text' => 'Message sent successfully.  Thanks '.$user_Name .'!  I\'ll reply directly to '.$user_Email.'.'));
 		die($output);
 	}
     
