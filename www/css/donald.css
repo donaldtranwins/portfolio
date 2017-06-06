@@ -33,6 +33,10 @@
 .name {
     font-size: 5em;
 }
+.under {
+    text-decoration: underline;
+    text-decoration-color: #BBB;
+}
 .main-nav.dark .inner-nav ul > li > a:hover,
 .main-nav.dark .inner-nav ul > li > a:focus {
     color: #EEE;
