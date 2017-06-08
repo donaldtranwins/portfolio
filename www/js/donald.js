@@ -20,9 +20,9 @@ function applyHover(){
 }
 
 function applyFlipIn(){
-    var $ul = $('.tpl-alt-tabs');
+    const $ul = $('.tpl-alt-tabs');
     $ul.each(function(){
-        var $li = $(this).children();
+        const $li = $(this).children();
         $li.each(function(index){
             $(this).attr({
                 class: "wow flipInX",
@@ -80,25 +80,25 @@ function enableMagnific(){
 
 // Appending Sensitive Information to prevent bot sniffing
 function appendEmail(){
-    let e = "don";
+    var e = "don";
     e += "ald";
     e += "jtr";
     e += "an@";
     e += "gma";
     e += "il.";
     e += "com";
-    let m = 'mai';
+    var m = 'mai';
     m += 'lto:';
     $('#e').text(e).attr('href', `${m+=e}?subject=Position%20Available&#58;%20&body=Hi%20Donald&#44;%0A%0A%20I%20read%20your%20resume&#44;%20love%20it&#46;%20%20I%20wanted%20to%20reach%20out%20about%20an%20opportunity%20we%20have%20for%20you&#58;%0A%0A%0AThanks&#44;%0A%0A`)
 }
 function appendPhone(){
-    let p = '71';
+    var p = '71';
     p += '4-';
     p += '24';
     p += '8-';
     p += '62';
     p += '69';
-    let t = 'te';
+    var t = 'te';
     t += 'l:';
     $('#p').text(p).attr('href', `${t+=p}`);
 }
@@ -162,19 +162,20 @@ function beginRotateHeartbeat(){
 // Creates Handler for the Contact form
 function contactFormHandler(){
     // defining icons to use for contact form
-    var icon_ready = $('<i>').addClass("fa fa-envelope");
-    var icon_sending = $('<i>').addClass("fa fa-spin fa-spinner");
-    var icon_sent = $('<i>').addClass("fa fa-check");
-    var icon_fail = $('<i>').addClass("fa fa-times");
-    var $submit = $("#submit_btn");
-
+    const icon_ready = $('<i>').addClass("fa fa-envelope");
+    const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner");
+    const icon_sent = $('<i>').addClass("fa fa-check");
+    const icon_fail = $('<i>').addClass("fa fa-times");
+    const $submit = $("#submit_btn");
+    const $alert = $("#result");
+    const $forms = $('#contact_form input, #contact_form textarea');
 
     $submit.click(function(){
 
         //get input field values
-        var user_name = $('input[name=name]').val();
-        var user_email = $('input[name=email]').val();
-        var user_message = $('textarea[name=message]').val();
+        const user_name = $('input[name=name]').val();
+        const user_email = $('input[name=email]').val();
+        const user_message = $('textarea[name=message]').val();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -212,6 +213,7 @@ function contactFormHandler(){
                 //load json data from server and output message
                 if (response.type === 'error' && response.error === 'server') {
                     sendFailed();
+                    return false;
                 }
                 else if (response.type === 'error' && response.error === 'client') {
                     var output = '<div class="error">' + response.text + '</div>';
@@ -226,9 +228,9 @@ function contactFormHandler(){
                         .append(icon_sent);
 
                     //reset values in all input fields
-                    $('#contact_form input, #contact_form textarea').val('');
+                    $forms.val('');
                 }
-                $("#result").hide().html(output).slideDown();
+                $alert.hide().html(output).slideDown();
             }, 'json');
 
         }
@@ -236,8 +238,8 @@ function contactFormHandler(){
         return false;
     });
     function sendFailed(){
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        var emailURL = $('#e').parent().parent().parent();
+        const animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        const emailURL = $('#e').parent().parent().parent();
 
         $submit.toggleClass('submit_btn_dead btn-dangerous animated hinge')
             .text('Service Unavailable ')
@@ -245,7 +247,7 @@ function contactFormHandler(){
             .append(icon_fail)
             .one(animationEnd, function(){
                 $('#contact_form .clearfix').remove();
-                $("#result").hide().html('<div class="error">Sorry, this service is unavailable.  Please use the link above.</div>').slideDown();
+                $alert.hide().html('<div class="error">Sorry, this service is unavailable.  Please use the link above.</div>').slideDown();
                 emailURL.addClass('animated rubberBand')
                     .one(animationEnd,function(){
                         emailURL.removeClass('animated rubberBand')
@@ -253,7 +255,8 @@ function contactFormHandler(){
                     })
             })
             .off('click');
-        $("#contact_form input, #contact_form textarea").off('keyup');
+        $forms.off('keyup').off('keypress');
+        return '';
     }
     function checkFail(){
         if ($submit.text() === "Sending... "){
@@ -261,10 +264,17 @@ function contactFormHandler(){
         }
     }
 
-    //reset previously set border colors and hide all message on .keyup()
-    $("#contact_form input, #contact_form textarea").keyup(function(){
-        $("#contact_form input, #contact_form textarea").css('border-color', '');
-        $("#result").slideUp();
+    //allows user to submit form by pressing ctrl+enter on any field.
+    $forms.keypress(function () {
+        if (event.keyCode === 10)  $submit.click();
+    });
+
+    //reset previously set border colors and hide all message on .keyup() that isnt ctrl or enter
+    $forms.keyup(function(){
+        if (event.keyCode === 17 || event.keyCode === 13)
+            return;
+        $forms.css('border-color', '');
+        $alert.slideUp();
         $submit.removeClass('disabled btn-dangerous animated shake flash')
             .text('Send Message ')
             .append(icon_ready);
