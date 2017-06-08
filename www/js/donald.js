@@ -2,14 +2,13 @@ $(document).ready(initialize);
 
 function initialize(){
     // applyHover(); //not working
-    applyFlipIn();
+    applySkillsAnimations();
     ensureAllLinksOpenNewWindow();
     enableMagnific();
     appendEmail();
     appendPhone();
-    contactFormHandler();
-    // openMap(); // removed map slideout
     allowCollapseHamburger();
+    contactFormHandler();
 }
 
 // Applies data-hover attribute to all p elements in Skills, for CSS animation
@@ -19,7 +18,8 @@ function applyHover(){
     });
 }
 
-function applyFlipIn(){
+// Applies animation effects to all the skills
+function applySkillsAnimations(){
     const $ul = $('.tpl-alt-tabs');
     $ul.each(function(){
         const $li = $(this).children();
@@ -43,6 +43,7 @@ function ensureAllLinksOpenNewWindow(){
     $links.attr('target','_blank');
 }
 
+// Enables the AJAX loader when user clicks a popup link
 function enableMagnific(){
     var over;
     $('.magnific').magnificPopup({
@@ -91,6 +92,7 @@ function appendEmail(){
     m += 'lto:';
     $('#e').text(e).attr('href', `${m+=e}?subject=Position%20Available&#58;%20&body=Hi%20Donald&#44;%0A%0A%20I%20read%20your%20resume&#44;%20love%20it&#46;%20%20I%20wanted%20to%20reach%20out%20about%20an%20opportunity%20we%20have%20for%20you&#58;%0A%0A%0AThanks&#44;%0A%0A`)
 }
+// Appending Sensitive Information to prevent bot sniffing
 function appendPhone(){
     var p = '71';
     p += '4-';
@@ -103,10 +105,6 @@ function appendPhone(){
     $('#p').text(p).attr('href', `${t+=p}`);
 }
 
-// Pre-opening the map
-function openMap(){
-    $(".map-section").trigger('click');
-}
 
 // Allowing user to close the hamburger button by clicking anywhere on screen
 function allowCollapseHamburger() {
@@ -146,7 +144,7 @@ function isScrolledIntoView(domelement) {
 function unbindScrollEventHandler() {
     $(document).unbind('scroll', scrollEventHandler);
 }
-// Starts the heartbeat to rotate the icon
+// Starts the heartbeat to rotate the HTML/CSS icon
 function beginRotateHeartbeat(){
     const $spinner = $('.spinner');
     window.setTimeout(startSpins,3333,$spinner);
@@ -159,9 +157,9 @@ function beginRotateHeartbeat(){
     }
 }
 
-// Creates Handler for the Contact form
+// Creates Front-end Handler for the Contact form
 function contactFormHandler(){
-    // defining icons to use for contact form
+    // defining jQuery references for cleaner code
     const icon_ready = $('<i>').addClass("fa fa-envelope");
     const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner");
     const icon_sent = $('<i>').addClass("fa fa-check");
@@ -192,6 +190,7 @@ function contactFormHandler(){
             $('textarea[name=message]').css('border-color', '#e41919');
             proceed = false;
         }
+        // an easy way to test what happens when the server is unreachable
         if (user_message === 'server is down'){
             proceed = true;
         }
