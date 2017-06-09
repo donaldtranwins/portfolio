@@ -30,6 +30,12 @@
 .home-text * {
     top: -12%;
 }
+blockquote {
+    margin: 1em 0;
+}
+.about-text p {
+    font-size: 1.1em;
+}
 .name {
     font-size: 5em;
 }

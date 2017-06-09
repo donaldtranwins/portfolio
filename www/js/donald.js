@@ -204,6 +204,7 @@ function contactFormHandler(){
             };
 
             $submit.addClass('disabled')
+                .removeClass('btn-success btn-dangerous')
                 .text('Sending... ')
                 .append(icon_sending);
             setTimeout(checkFail,10000);
