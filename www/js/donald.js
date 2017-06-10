@@ -212,7 +212,8 @@ function contactFormHandler(){
             $.post('./contact_me_smtp.php', post_data, function(response){
                 //load json data from server and output message
                 if (response.type === 'error' && response.error === 'server') {
-                    sendFailed();
+                    sendFailed(response.text);
+                    window.mail = response.message;
                     return false;
                 }
                 else if (response.type === 'error' && response.error === 'client') {
@@ -237,7 +238,7 @@ function contactFormHandler(){
 
         return false;
     });
-    function sendFailed(){
+    function sendFailed(text){
         const animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         const emailURL = $('#e').parent().parent().parent();
 
@@ -247,7 +248,7 @@ function contactFormHandler(){
             .append(icon_fail)
             .one(animationEnd, function(){
                 $('#contact_form .clearfix').remove();
-                $alert.hide().html('<div class="error">Sorry, this service is unavailable.  Please use the link above.</div>').slideDown();
+                $alert.hide().html('<div class="error">'+text+'</div>').slideDown();
                 emailURL.addClass('animated rubberBand')
                     .one(animationEnd,function(){
                         emailURL.removeClass('animated rubberBand')
@@ -256,7 +257,6 @@ function contactFormHandler(){
             })
             .off('click');
         $forms.off('keyup').off('keypress');
-        return '';
     }
     function checkFail(){
         if ($submit.text() === "Sending... "){

@@ -19,7 +19,7 @@ if($_POST)
         $output = json_encode(
         array(
             'type'=>'error', 
-            'text' => 'Request must come from Ajax'
+            'text' => 'Request must come from AJAX, sorry.'
         ));
         
         die($output);
@@ -28,7 +28,7 @@ if($_POST)
     //check $_POST vars are set, exit if any missing
     if(!isset($_POST["userName"]) || !isset($_POST["userEmail"]) || !isset($_POST["userMessage"]))
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Don\'t go pushing buttons without typing anything in!', 'error' => 'client'));
+        $output = json_encode(array('type'=>'error', 'text' => 'You trying something fancy?  Just use the form.', 'error' => 'client'));
         die($output);
     }
 
@@ -75,8 +75,7 @@ if($_POST)
 	$mail->Password = $password;
 	$mail->SMTPSecure = $SMTPSecure;
 	$mail->Port = $port;
-	
-	 
+
 	$mail->setFrom($username);
 	$mail->addReplyTo($user_Email);
 	 
@@ -88,7 +87,7 @@ if($_POST)
 
 	if(!$mail->send()) {
 
-		$output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above.', 'error' => 'server'));
+		$output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above.', 'error' => 'server', 'message' => $mail->ErrorInfo));
 		die($output);
 
 	} else {
