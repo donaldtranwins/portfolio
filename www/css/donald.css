@@ -30,6 +30,8 @@
 .home-text * {
     top: -12%;
 }
+
+/* About Donald */
 blockquote {
     margin: 1em 0;
 }
@@ -43,6 +45,7 @@ blockquote {
     text-decoration: underline;
     text-decoration-color: #BBB;
 }
+/* Nav Bar */
 .main-nav.dark .inner-nav ul > li > a:hover,
 .main-nav.dark .inner-nav ul > li > a:focus {
     color: #EEE;
@@ -53,38 +56,6 @@ blockquote {
     text-decoration: overline;
     text-shadow: 0 0 0 #000;
 }
-
-/* Hover Effect Start, not working yet  |delete space -> * /
-.tpl-alt-tabs a {
-    color: #6f8686;
-    text-shadow: 0 0 1px rgba(111,134,134,0.3);
-}
-
-.tpl-alt-tabs a p::before {
-    color: #fff;
-    content: attr(data-hover);
-    position: absolute;
-    opacity: 0;
-    text-shadow: 0 0 1px rgba(255,255,255,0.3);
-    -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
-    -moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
-    transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
-    -webkit-transition: -webkit-transform 1s, opacity 0.3s;
-    -moz-transition: -moz-transform 1s, opacity 0.3s;
-    transition: transform .2s, opacity 0.3s;
-    pointer-events: none;
-}
-
-.tpl-alt-tabs a:hover p::before,
-.tpl-alt-tabs a:focus p::before {
-    -webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
-    -moz-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
-    transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
-    opacity: 1;
-}
-/* Hover Effect End */
-
-
 
 /* Filter Effect Start */
 .works-filter a {
@@ -202,6 +173,7 @@ blockquote {
 }
 /* Apps end */
 
+/* contact form animations */
 .btn-dangerous {
     color: #fff;
     background-color: #d9534f !important;

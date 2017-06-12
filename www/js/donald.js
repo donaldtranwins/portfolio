@@ -1,7 +1,6 @@
 $(document).ready(initialize);
 
 function initialize(){
-    // applyHover(); //not working
     applySkillsAnimations();
     ensureAllLinksOpenNewWindow();
     enableMagnific();
@@ -9,13 +8,6 @@ function initialize(){
     appendPhone();
     allowCollapseHamburger();
     contactFormHandler();
-}
-
-// Applies data-hover attribute to all p elements in Skills, for CSS animation
-function applyHover(){
-    $('.tpl-alt-tabs p').each(function(){
-        $(this).attr('data-hover',$(this).text())
-    });
 }
 
 // Applies animation effects to all the skills
@@ -210,19 +202,21 @@ function contactFormHandler(){
             setTimeout(checkFail,10000);
             //Ajax post data to server
             $.post('./contact_me_smtp.php', post_data, function(response){
-                //load json data from server and output message
+                // fails due to some sort of server issue such as auth with with gmail SMTP or timeout
                 if (response.type === 'error' && response.error === 'server') {
                     sendFailed(response.text);
                     window.mail = response.message;
                     return false;
                 }
                 else if (response.type === 'error' && response.error === 'client') {
+                    // fails due to client not specifying the correct parameters
                     var output = '<div class="error">' + response.text + '</div>';
                     $submit.addClass('disabled btn-dangerous animated shake')
                         .text('Message not sent ')
                         .append(icon_fail);
                 }
                 else {
+                    // success.  mail is sent and user sees confirmation
                     output = '<div class="success">' + response.text + '</div>';
                     $submit.addClass('btn-success animated flash')
                         .text('Sent! ')

@@ -43,7 +43,7 @@ if($_POST)
     //additional php validation
     if($user_Message === 'server is down')
     {
-        $output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above. (this animation only displays when gmail SMTP service is down)', 'error' => 'server'));
+        $output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is currently unavailable.  Please use the link above.', 'error' => 'server'));
         die($output);
     }
     if(strlen($user_Name)<4) // If length is less than 4 it will throw an HTTP error.
@@ -87,7 +87,7 @@ if($_POST)
 
 	if(!$mail->send()) {
 
-		$output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is unavailable.  Please use the link above.', 'error' => 'server', 'message' => $mail->ErrorInfo));
+		$output = json_encode(array('type'=>'error', 'text' => 'Sorry, this service is currently unavailable.  Please use the link above.', 'error' => 'server', 'message' => $mail->ErrorInfo));
 		die($output);
 
 	} else {
