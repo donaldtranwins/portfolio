@@ -7,6 +7,7 @@ function initialize(){
     appendEmail();
     appendPhone();
     allowCollapseHamburger();
+    allowTouchEvents();
     contactFormHandler();
 }
 
@@ -108,6 +109,11 @@ function allowCollapseHamburger() {
             hamburger.click();
         }
     });
+}
+
+// Allows tap events on mobile devices to trigger CSS hover events
+function allowTouchEvents(){
+    document.body.addEventListener('touchstart',function(){})
 }
 
 
