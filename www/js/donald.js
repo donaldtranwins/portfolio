@@ -113,7 +113,7 @@ function allowCollapseHamburger() {
 
 // Allows tap events on mobile devices to trigger CSS hover events
 function allowTouchEvents(){
-    document.body.addEventListener('touchstart',function(){})
+    $('.work-item').on('touchstart',function(){})
 }
 
 
@@ -260,7 +260,7 @@ function contactFormHandler(){
     }
     function checkFail(){
         if ($submit.text() === "Sending... "){
-            sendFailed();
+            sendFailed("Sorry, this service is currently unavailable.  Please use the link above.");
         }
     }
 
