@@ -63,7 +63,7 @@ if($_POST)
     }
     
     //proceed with PHP email.
-    include("./PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
+    include("./../../server/mailer/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
 
 	$mail = new PHPMailer();
 	 
