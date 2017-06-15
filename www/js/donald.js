@@ -32,7 +32,7 @@ function applySkillsAnimations(){
 
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
 function ensureAllLinksOpenNewWindow(){
-    const $links = $("a[href^='http']");
+    const $links = $("a[href^='http'],a[href^='/']");
     $links.attr('target','_blank');
 }
 
@@ -169,9 +169,9 @@ function contactFormHandler(){
     $submit.click(function(){
 
         //get input field values
-        const user_name = $('input[name=name]').val();
-        const user_email = $('input[name=email]').val();
-        const user_message = $('textarea[name=message]').val();
+        const user_name = $('input[name=name]').val().trim();
+        const user_email = $('input[name=email]').val().trim();
+        const user_message = $('textarea[name=message]').val().trim();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
