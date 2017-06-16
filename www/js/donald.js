@@ -1,17 +1,18 @@
 $(document).ready(initialize);
 
 function initialize(){
-    applySkillsAnimations();
-    ensureAllLinksOpenNewWindow();
-    enableMagnific();
     appendEmail();
     appendPhone();
+    ensureAllLinksOpenNewWindow();
+    enableMagnific();
     allowCollapseHamburger();
     allowTouchEvents();
     contactFormHandler();
+    applySkillsAnimations();
+    applyAboutAnimations();
 }
 
-// Applies animation effects to all the skills
+// Applies animation effects to all the skills icons
 function applySkillsAnimations(){
     const $ul = $('.tpl-alt-tabs');
     $ul.each(function(){
@@ -23,8 +24,22 @@ function applySkillsAnimations(){
                 "data-wow-duration": ".4s"
             }).find('p').attr({
                 class: "wow slideInDown",
-                'data-wow-delay': "1.4s",
+                'data-wow-delay': ".8s",
                 'data-wow-duration': ".6s"
+            });
+        })
+    });
+}
+// Applies animation effects to all the paragraphs
+function applyAboutAnimations(){
+    const $div = $('.about-text');
+    $div.each(function(){
+        const $p = $(this).children();
+        $p.each(function(index){
+            $(this).attr({
+                class: "wow fadeIn",
+                "data-wow-delay": "0."+(index*2-1)+"s",
+                "data-wow-duration": ".6s"
             });
         })
     });
@@ -125,7 +140,7 @@ function allowTouchEvents(){
  */
 // Defining callback function that fires when the page is scrolled
 var scrollEventHandler = function() {
-    if(isScrolledIntoView(document.getElementsByClassName('spinner')[0])) {
+    if(isScrolledIntoView($('.spinner')[0])) {
         unbindScrollEventHandler();
         beginRotateHeartbeat();
     }
@@ -158,8 +173,8 @@ function beginRotateHeartbeat(){
 // Creates Front-end Handler for the Contact form
 function contactFormHandler(){
     // defining jQuery references for cleaner code
-    const icon_ready = $('<i>').addClass("fa fa-envelope");
-    const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner");
+    const icon_ready = $('<i>').addClass("fa fa-paper-plane"); //maybe add this only when it passes instant validation
+    const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner"); //though i need to add instant validation first..
     const icon_sent = $('<i>').addClass("fa fa-check");
     const icon_fail = $('<i>').addClass("fa fa-times");
     const $submit = $("#submit_btn");
@@ -167,7 +182,7 @@ function contactFormHandler(){
     const $forms = $('#contact_form input, #contact_form textarea');
 
     $submit.click(function(){
-
+        $submit.find('.fa-paper-plane').attr('data-wow-duration','2s').addClass('wow rotateUpRight');
         //get input field values
         const user_name = $('input[name=name]').val().trim();
         const user_email = $('input[name=email]').val().trim();
