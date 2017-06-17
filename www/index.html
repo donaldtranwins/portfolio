@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Donald J Tran</title>
+    <title>Donald J Tran's Portfolio</title>
     <meta name="description" content="Donald J Tran Personal Portfolio Website Resume Back-end Developer">
     <meta name="keywords" content="Donald J Tran Personal Portfolio Website Resume Back-end Developer">
     <meta charset="utf-8">
-    <meta name="author" content="Donald Tran">
+    <meta name="author" content="Donald J Tran">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/computer-keyboard-icon2.png">
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -109,7 +110,7 @@
                                 Back-end Web Developer with a repertoire of front-end skills.
                             </p>
                         </blockquote>
-                        <img src="images/wildwing.jpg" class="center-block"/>
+                        <img src="images/wildwing.jpg" class="center-block wow fadeIn" data-wow-delay=".5s" data-wow-duration="1.2s"/>
                     </div>
 
                     <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30 about-text">
@@ -226,7 +227,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://flexboxfroggy.com/" target="_blank">
+                    <a href="https://flexboxfroggy.com/">
                         <div class="alt-tabs-icon">
                             <div class="spinner">
                                 <div class="face front">
@@ -236,7 +237,7 @@
                                     <img src="images/skills/css3-spin.png" />
                                 </div>
                             </div>
-                            <!-- spacer --><img src="images/skills/css3-spin.png" style="visibility: hidden"/>
+                            <!-- spacer --><img src="images/skills/html5-spin.png" style="visibility: hidden"/>
                         </div>
                         <p>HTML5 / CSS3 &#38; Flexbox</p>
                     </a>
@@ -244,7 +245,7 @@
                 <li>
                     <a href="http://redux.js.org/docs/basics/UsageWithReact.html">
                         <div class="alt-tabs-icon">
-                            <img src="images/skills/react_redux_v2.png"/>
+                            <img src="images/skills/react_redux_v2.2.png"/>
                         </div>
                         <p>React.js / Redux</p>
                     </a>
@@ -338,10 +339,10 @@
 
 
             <!-- Works Filter -->
-            <div class="works-filter font-alt align-center wow slideInUp" data-wow-delay=".5s" data-wow-duration="1s">
-                <a href="#" class="filter active" data-filter="*"><span data-hover="All Apps">All Apps</span></a>
-                <a href="#team" class="filter" data-filter=".team"><span data-hover="Team">Team</span></a>
-                <a href="#individual" class="filter" data-filter=".individual"><span data-hover="Individual">Individual</span></a>
+            <div class="works-filter font-alt align-center wow slideInUp" data-wow-delay=".7s" data-wow-duration="1s">
+                <a href="#" class="filter active wow slideInLeft" data-wow-delay=".3s" data-wow-duration="1s" data-filter="*"><span data-hover="All Apps">All Apps</span></a>
+                <a href="#team" class="filter wow slideInDown" data-wow-delay=".5s" data-wow-duration="1s" data-filter=".team"><span class="wow slideInDown" data-wow-delay=".6s" data-wow-duration="1s" data-hover="Team">Team</span></a>
+                <a href="#individual" class="filter wow slideInRight" data-wow-delay=".3s" data-wow-duration="1s" data-filter=".individual"><span data-hover="Individual">Individual</span></a>
             </div>
             <!-- End Works Filter -->
 
@@ -350,10 +351,10 @@
             <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
 
                 <!-- School2Career -->
-                <li class="work-item mix team">
+                <li class="work-item mix team wow slideInLeft" data-wow-delay=".3s" data-wow-duration="1s">
                     <a>
                         <div class="work-img">
-                            <img class="work-img" src="images/portfolio/s2c-650x356px.png" alt="School2Career" />
+                            <img class="work-img" src="images/portfolio/s2c-650x356px.jpg" alt="School2Career" />
                         </div>
                         <p class="text-center">School2Career</p>
                         <div class="work-intro">
@@ -361,7 +362,7 @@
                             <div class="work-descr nav-social-links">
                                 <a href="https://github.com/donaldtranwins/school2career" title="Source Code"><i class="fa fa-github"></i></a>
                                 <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
-                                <a href="http://s2c.donaldjtran.com" title="Live Site"><i class="fa fa-desktop"></i></a>
+                                <a href="https://school2career.net" title="Live Site"><i class="fa fa-desktop"></i></a>
                             </div>
                         </div>
                     </a>
@@ -369,10 +370,10 @@
                 <!-- S2C -->
 
                 <!-- Grab a Beer -->
-                <li class="work-item mix team">
+                <li class="work-item mix team wow zoomIn" data-wow-delay=".3s" data-wow-duration="1s">
                     <a>
                         <div class="work-img">
-                            <img class="work-img" src="images/portfolio/gab-650x356px.png" alt="Grab a Beer" />
+                            <img class="work-img" src="images/portfolio/gab-650x356px.jpg" alt="Grab a Beer" />
                         </div>
                         <p class="text-center">Grab a Beer</p>
                         <div class="work-intro">
@@ -380,37 +381,18 @@
                             <div class="work-descr nav-social-links">
                                 <a href="https://www.github.com/donaldtranwins/grab_a_beer" title="Source Code"><i class="fa fa-github"></i></a>
                                 <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
-                                <a href="https://dev.donaldjtran.com/grababeer" title="Live Site"><i class="fa fa-desktop"></i></a>
+                                <a href="/grababeer" title="Live Site"><i class="fa fa-desktop"></i></a>
                             </div>
                         </div>
                     </a>
                 </li>
                 <!-- GAB -->
 
-                <!-- Student Grade Table -->
-                <li class="work-item mix individual">
-                    <a>
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/sgt-650x356px.png" alt="Student Grade Table" />
-                        </div>
-                        <p class="text-center">Student Grade Table</p>
-                        <div class="work-intro">
-                            <h3 class="work-title">Student Grade Table</h3>
-                            <div class="work-descr nav-social-links">
-                                <a href="https://www.github.com/donaldtranwins/student_grade_table" title="Source Code"><i class="fa fa-github"></i></a>
-                                <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
-                                <a href="https://dev.donaldjtran.com/sgt" title="Live Site"><i class="fa fa-desktop"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- SGT -->
-
                 <!-- Calculator -->
-                <li class="work-item mix individual">
+                <li class="work-item mix individual wow slideInRight" data-wow-delay=".3s" data-wow-duration="1s">
                     <a>
                         <div class="work-img">
-                            <img class="work-img" src="images/portfolio/calc-650x356px.png" alt="Calculator" />
+                            <img class="work-img" src="images/portfolio/calc-650x356px.jpg" alt="Calculator" />
                         </div>
                         <p class="text-center">Calculator</p>
                         <div class="work-intro">
@@ -418,18 +400,37 @@
                             <div class="work-descr nav-social-links">
                                 <a href="https://www.github.com/donaldtranwins/calculator" title="Source Code"><i class="fa fa-github"></i></a>
                                 <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
-                                <a href="https://dev.donaldjtran.com/calculator" title="Live Site"><i class="fa fa-desktop"></i></a>
+                                <a href="/calculator" title="Live Site"><i class="fa fa-desktop"></i></a>
                             </div>
                         </div>
                     </a>
                 </li>
                 <!-- Calc -->
 
-                <!-- Overmatch -->
-                <li class="work-item mix individual">
+                <!-- Student Grade Table -->
+                <li class="work-item mix individual wow slideInLeft" data-wow-delay=".4s" data-wow-duration=".6s">
                     <a>
                         <div class="work-img">
-                            <img class="work-img" src="images/portfolio/ovm-650x356px.png" alt="Overmatch" />
+                            <img class="work-img" src="images/portfolio/sgt-650x356px.jpg" alt="Student Grade Table" />
+                        </div>
+                        <p class="text-center">Student Grade Table</p>
+                        <div class="work-intro">
+                            <h3 class="work-title">Student Grade Table</h3>
+                            <div class="work-descr nav-social-links">
+                                <a href="https://www.github.com/donaldtranwins/student_grade_table" title="Source Code"><i class="fa fa-github"></i></a>
+                                <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
+                                <a href="/sgt" title="Live Site"><i class="fa fa-desktop"></i></a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <!-- SGT -->
+
+                <!-- Overmatch -->
+                <li class="work-item mix individual wow zoomIn" data-wow-delay=".4s" data-wow-duration=".6s">
+                    <a>
+                        <div class="work-img">
+                            <img class="work-img" src="images/portfolio/ovm-650x356px.jpg" alt="Overmatch" />
                         </div>
                         <p class="text-center">Overmatch</p>
                         <div class="work-intro">
@@ -439,7 +440,7 @@
                                 <!-- href="https://www.github.com/donaldtranwins/overmatch"-->
                                 <!--<a href="pages-under-construction.html" class="magnific" title="Details"><i class="fa fa-link"></i></a>-->
                                 <a title="Live Site (Coming Soon)"><i class="fa fa-desktop"></i></a>
-                                <!-- href="https://dev.donaldjtran.com/overmatch"-->
+                                <!-- href="/overmatch"-->
                             </div>
                         </div>
                     </a>
@@ -447,10 +448,10 @@
                 <!-- Overwatch -->
 
                 <!-- Tic-Tac-Wars -->
-                <li class="work-item mix team">
+                <li class="work-item mix team wow slideInRight" data-wow-delay=".4s" data-wow-duration=".6s">
                     <a>
                         <div class="work-img">
-                            <img class="work-img" src="images/portfolio/ttt-650x356px.png" alt="Tic-Tac-Wars" />
+                            <img class="work-img" src="images/portfolio/ttt-650x356px.jpg" alt="Tic-Tac-Wars" />
                         </div>
                         <p class="text-center">Tic-Tac-Wars</p>
                         <div class="work-intro">
@@ -579,7 +580,7 @@
 
                         <!-- Phone -->
                         <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
+                            <div class="contact-item wow rollIn" data-wow-delay="0.2s" data-wow-duration="1.2s">
                                 <div class="ci-icon">
                                     <i class="fa fa-phone"></i>
                                 </div>
@@ -595,7 +596,7 @@
 
                         <!-- Email -->
                         <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
+                            <div class="contact-item wow rollIn" data-wow-delay="0.2s" data-wow-duration="1.2s">
                                 <div class="ci-icon">
                                     <i class="fa fa-envelope"></i>
                                 </div>
@@ -611,7 +612,7 @@
 
                         <!-- Résumé -->
                         <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
+                            <div class="contact-item wow rollIn" data-wow-delay="0.2s" data-wow-duration="1.2s">
                                 <div class="ci-icon">
                                     <i class="fa fa-file-pdf-o"></i>
                                 </div>
@@ -619,7 +620,7 @@
                                     Resume
                                 </div>
                                 <div class="ci-text">
-                                    <a href="DonaldTran-Resume-2017.pdf" target="_blank">PDF</a>
+                                    <a href="DonaldTran-Resume-2017.06.15.pdf" target="_blank">PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -704,10 +705,10 @@
 
             <!-- Social Links -->
             <div class="footer-social-links mb-110 mb-xs-60">
-                <a href="https://www.github.com/donaldtranwins" title="Github" target="_blank" class="tooltip-bot"><i class="fa fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/trandonald" title="LinkedIn" target="_blank" class="tooltip-bot"><i class="fa fa-linkedin"></i></a>
-                <a href="https://www.twitter.com/donaldtranwins" title="Twitter" target="_blank" class="tooltip-bot"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.facebook.com/donaldtran" title="Facebook" target="_blank" class="tooltip-bot"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.github.com/donaldtranwins" title="Github" class="tooltip-bot"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/trandonald" title="LinkedIn" class="tooltip-bot"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.twitter.com/donaldtranwins" title="Twitter" class="tooltip-bot"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/donaldtran" title="Facebook" class="tooltip-bot"><i class="fa fa-facebook"></i></a>
             </div>
             <!-- End Social Links -->
 

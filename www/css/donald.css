@@ -155,7 +155,7 @@ blockquote {
     font-weight: 700;
 }
 
-.work-item:hover .work-intro {
+.work-item:hover .work-intro{
     display: block;
     /*visibility: visible;*/
     bottom: auto;

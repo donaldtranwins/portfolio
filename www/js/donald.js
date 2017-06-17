@@ -1,16 +1,18 @@
 $(document).ready(initialize);
 
 function initialize(){
-    applySkillsAnimations();
-    ensureAllLinksOpenNewWindow();
-    enableMagnific();
     appendEmail();
     appendPhone();
+    ensureAllLinksOpenNewWindow();
+    enableMagnific();
     allowCollapseHamburger();
+    allowTouchEvents();
     contactFormHandler();
+    applySkillsAnimations();
+    applyAboutAnimations();
 }
 
-// Applies animation effects to all the skills
+// Applies animation effects to all the skills icons
 function applySkillsAnimations(){
     const $ul = $('.tpl-alt-tabs');
     $ul.each(function(){
@@ -22,8 +24,22 @@ function applySkillsAnimations(){
                 "data-wow-duration": ".4s"
             }).find('p').attr({
                 class: "wow slideInDown",
-                'data-wow-delay': "1.4s",
+                'data-wow-delay': ".8s",
                 'data-wow-duration': ".6s"
+            });
+        })
+    });
+}
+// Applies animation effects to all the paragraphs
+function applyAboutAnimations(){
+    const $div = $('.about-text');
+    $div.each(function(){
+        const $p = $(this).children();
+        $p.each(function(index){
+            $(this).attr({
+                class: "wow fadeIn",
+                "data-wow-delay": "0."+(index*2-1)+"s",
+                "data-wow-duration": ".6s"
             });
         })
     });
@@ -31,7 +47,7 @@ function applySkillsAnimations(){
 
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
 function ensureAllLinksOpenNewWindow(){
-    const $links = $("a[href^='http']");
+    const $links = $("a[href^='http'],a[href^='/']");
     $links.attr('target','_blank');
 }
 
@@ -110,6 +126,11 @@ function allowCollapseHamburger() {
     });
 }
 
+// Allows tap events on mobile devices to trigger CSS hover events
+function allowTouchEvents(){
+    $('.work-item').on('touchstart',function(){})
+}
+
 
 /**
  * Handling Rotating Animation of the HTML/CSS icon.  This prevents the rotating animation
@@ -119,7 +140,7 @@ function allowCollapseHamburger() {
  */
 // Defining callback function that fires when the page is scrolled
 var scrollEventHandler = function() {
-    if(isScrolledIntoView(document.getElementsByClassName('spinner')[0])) {
+    if(isScrolledIntoView($('.spinner')[0])) {
         unbindScrollEventHandler();
         beginRotateHeartbeat();
     }
@@ -152,8 +173,8 @@ function beginRotateHeartbeat(){
 // Creates Front-end Handler for the Contact form
 function contactFormHandler(){
     // defining jQuery references for cleaner code
-    const icon_ready = $('<i>').addClass("fa fa-envelope");
-    const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner");
+    const icon_ready = $('<i>').addClass("fa fa-paper-plane"); //maybe add this only when it passes instant validation
+    const icon_sending = $('<i>').addClass("fa fa-spin fa-spinner"); //though i need to add instant validation first..
     const icon_sent = $('<i>').addClass("fa fa-check");
     const icon_fail = $('<i>').addClass("fa fa-times");
     const $submit = $("#submit_btn");
@@ -161,11 +182,11 @@ function contactFormHandler(){
     const $forms = $('#contact_form input, #contact_form textarea');
 
     $submit.click(function(){
-
+        $submit.find('.fa-paper-plane').attr('data-wow-duration','2s').addClass('wow rotateUpRight');
         //get input field values
-        const user_name = $('input[name=name]').val();
-        const user_email = $('input[name=email]').val();
-        const user_message = $('textarea[name=message]').val();
+        const user_name = $('input[name=name]').val().trim();
+        const user_email = $('input[name=email]').val().trim();
+        const user_message = $('textarea[name=message]').val().trim();
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -201,7 +222,7 @@ function contactFormHandler(){
                 .append(icon_sending);
             setTimeout(checkFail,10000);
             //Ajax post data to server
-            $.post('./contact_me_smtp.php', post_data, function(response){
+            $.post('./php/contact_me_smtp.php', post_data, function(response){
                 // fails due to some sort of server issue such as auth with with gmail SMTP or timeout
                 if (response.type === 'error' && response.error === 'server') {
                     sendFailed(response.text);
@@ -254,7 +275,7 @@ function contactFormHandler(){
     }
     function checkFail(){
         if ($submit.text() === "Sending... "){
-            sendFailed();
+            sendFailed("Sorry, this service is currently unavailable.  Please use the link above.");
         }
     }
 

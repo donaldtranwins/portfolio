@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Routing</title>
+</head>
+<body style="white-space: pre-wrap">
+
+<div style="float: left; width: 45%;">
+    Should be HTTPS non-www        https://school2career.net
+    <a href="https://www.school2career.net" target="_blank">https://www.school2career.net</a>
+    <a href="https://school2career.net" target="_blank">https://school2career.net</a>
+    <a href="http://www.school2career.net" target="_blank">http://www.school2career.net</a>
+    <a href="http://school2career.net" target="_blank">http://school2career.net</a>
+
+    Should be HTTPS only                https://school.
+    <a href="https://school.donaldjtran.com" target="_blank">https://school.donaldjtran.com</a>
+    <a href="http://school.donaldjtran.com" target="_blank">http://school.donaldjtran.com</a>
+
+    Should be http only                 s2c.
+    <a href="http://s2c.donaldjtran.com" target="_blank">http://s2c.donaldjtran.com</a>
+    <a href="https://s2c.donaldjtran.com" target="_blank">https://s2c.donaldjtran.com</a>
+
+    Should be HTTPS only                https://donaldjtran.com
+    <a href="https://www.donaldjtran.com" target="_blank">https://www.donaldjtran.com</a>
+    <a href="https://donaldjtran.com" target="_blank">https://donaldjtran.com</a>
+    <a href="http://www.donaldjtran.com" target="_blank">http://www.donaldjtran.com</a>
+    <a href="http://donaldjtran.com" target="_blank">http://donaldjtran.com</a>
+
+    Should be HTTPS only                https://dev.
+    <a href="https://dev.donaldjtran.com" target="_blank">https://dev.donaldjtran.com</a>
+    <a href="http://dev.donaldjtran.com" target="_blank">http://dev.donaldjtran.com</a>
+</div>
+
+<div style="float: left; width: 45%;">
+    Prod API calls
+    <a href="https://school2career.net/fetch_schools" target="_blank">https://school2career.net/fetch_schools</a>
+    <a href="https://school.donaldjtran.com/school/206181" target="_blank">https://school.donaldjtran.com/school/206181</a>
+    <a href="https://school2career.net/one_school/id/206181" target="_blank">https://school2career.net/one_school/id/206181</a>
+    <a href="https://school2career.net/one_school/id/" target="_blank">https://school2career.net/one_school/id/</a>
+    <a href="https://school2career.net/lol" target="_blank">https://school2career.net/lol</a>
+
+    Staging API calls
+    <a href="https://school.donaldjtran.com/fetch_schools" target="_blank">https://school.donaldjtran.com/fetch_schools</a>
+    <a href="https://school.donaldjtran.com/school/206181" target="_blank">https://school.donaldjtran.com/school/206181</a>
+    <a href="https://school.donaldjtran.com/one_school/id/206181" target="_blank">https://school.donaldjtran.com/one_school/id/206181</a>
+    <a href="https://school.donaldjtran.com/one_school/id/" target="_blank">https://school.donaldjtran.com/one_school/id/</a>
+    <a href="https://school.donaldjtran.com/lol" target="_blank">https://school.donaldjtran.com/lol</a>
+
+    Dev API calls
+    <a href="http://s2c.donaldjtran.com/fetch_schools" target="_blank">http://s2c.donaldjtran.com/fetch_schools</a>
+    <a href="http://s2c.donaldjtran.com/school/206181" target="_blank">http://s2c.donaldjtran.com/school/206181</a>
+    <a href="http://s2c.donaldjtran.com/one_school/id/206181" target="_blank">http://s2c.donaldjtran.com/one_school/id/206181</a>
+    <a href="http://s2c.donaldjtran.com/one_school/id/" target="_blank">http://s2c.donaldjtran.com/one_school/id/</a>
+    <a href="http://s2c.donaldjtran.com/lol" target="_blank">http://s2c.donaldjtran.com/lol</a>
+</div>
+
+</body>
+</html>

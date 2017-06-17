@@ -3,7 +3,7 @@ if($_POST)
 {
     require_once ('./credentials.php');
     $to_Email       = $email; // Replace with recipient email address
-	$subject        = 'Message from website '.$_SERVER['SERVER_NAME']; //Subject line for emails
+	$subject        = 'Website: '.$_SERVER['SERVER_NAME']; //Subject line for emails
     
     $host           = $mailHost; // Your SMTP server. For example, smtp.mail.yahoo.com
     $username       = $user; //For example, your.email@yahoo.com
@@ -63,7 +63,7 @@ if($_POST)
     }
     
     //proceed with PHP email.
-    include("./php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
+    include("./../../server/mailer/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
 
 	$mail = new PHPMailer();
 	 
