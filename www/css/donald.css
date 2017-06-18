@@ -20,6 +20,9 @@
 .spinner .back {
     -webkit-transform: rotateY(-180deg);
 }
+.rotateIn{
+    animation-duration: 3s;
+}
 /* HTML/CSS Spin End */
 
 /* Hero Text */
@@ -194,7 +197,9 @@ blockquote {
     -o-animation-duration: 2s;
     animation-duration: 2s;
 }
-
+.footer-social-links {
+    font-size: 1.5em;
+}
 /* Shows only 4 skills at a time */
 @media (min-width: 992px) {
     #skills .container {
