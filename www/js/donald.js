@@ -18,29 +18,37 @@ function applySkillsAnimations(){
     $ul.each(function(){
         const $li = $(this).children();
         $li.each(function(index){
-            $(this).attr({
-                class: "wow flipInX",
-                "data-wow-delay": "0."+(index+2)+"s",
-                "data-wow-duration": ".4s"
-            }).find('p').attr({
-                class: "wow slideInDown",
-                'data-wow-delay': ".8s",
-                'data-wow-duration': ".6s"
-            });
+            animateElement(this, "flipInX", "0."+(index+2), .4);
+            animateElement($(this).find('p'), "slideInDown", .8, .6);
         })
     });
 }
+function animateElement(element, effect, delay, duration){
+    const $element = $(element);
+    $element.addClass('wow '+effect)
+        .attr({
+            "data-wow-delay": delay+"s",
+            "data-wow-duration": duration+"s"
+        })
+}
+// function animateChildren(parent, animation){
+//     const $parent = $(parent);
+//     $parent.each(function(){
+//         const $child = $(this).children();
+//         $child.each(animation)
+//     })
+// }
+// animateChildren('.about-text',aboutMe);
+// function aboutMe(){
+//     animateElement(this, "fadeIn", "0."+(index*2-1), .6);
+// }
 // Applies animation effects to all the paragraphs
 function applyAboutAnimations(){
     const $div = $('.about-text');
     $div.each(function(){
         const $p = $(this).children();
         $p.each(function(index){
-            $(this).attr({
-                class: "wow fadeIn",
-                "data-wow-delay": "0."+(index*2-1)+"s",
-                "data-wow-duration": ".6s"
-            });
+            animateElement(this, "fadeIn", "0."+(index*2-1), .6);
         })
     });
 }
