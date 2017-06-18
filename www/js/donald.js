@@ -7,50 +7,33 @@ function initialize(){
     enableMagnific();
     allowCollapseHamburger();
     allowTouchEvents();
+    bindScrollEventHandler();
     contactFormHandler();
-    applySkillsAnimations();
-    applyAboutAnimations();
+    applyAnimations();
 }
-
-// Applies animation effects to all the skills icons
-function applySkillsAnimations(){
-    const $ul = $('.tpl-alt-tabs');
-    $ul.each(function(){
-        const $li = $(this).children();
-        $li.each(function(index){
-            animateElement(this, "flipInX", "0."+(index+2), .4);
-            animateElement($(this).find('p'), "slideInDown", .8, .6);
-        })
-    });
+function appendEmail(){
+    var e = "don";
+    e += "ald";
+    e += "jtr";
+    e += "an@";
+    e += "gma";
+    e += "il.";
+    e += "com";
+    var m = 'mai';
+    m += 'lto:';
+    $('#e').text(e).attr('href', `${m+=e}?subject=Position%20Available&#58;%20&body=Hi%20Donald&#44;%0A%0A%20I%20read%20your%20resume&#44;%20love%20it&#46;%20%20I%20wanted%20to%20reach%20out%20about%20an%20opportunity%20we%20have%20for%20you&#58;%0A%0A%0AThanks&#44;%0A%0A`)
 }
-function animateElement(element, effect, delay, duration){
-    const $element = $(element);
-    $element.addClass('wow '+effect)
-        .attr({
-            "data-wow-delay": delay+"s",
-            "data-wow-duration": duration+"s"
-        })
-}
-// function animateChildren(parent, animation){
-//     const $parent = $(parent);
-//     $parent.each(function(){
-//         const $child = $(this).children();
-//         $child.each(animation)
-//     })
-// }
-// animateChildren('.about-text',aboutMe);
-// function aboutMe(){
-//     animateElement(this, "fadeIn", "0."+(index*2-1), .6);
-// }
-// Applies animation effects to all the paragraphs
-function applyAboutAnimations(){
-    const $div = $('.about-text');
-    $div.each(function(){
-        const $p = $(this).children();
-        $p.each(function(index){
-            animateElement(this, "fadeIn", "0."+(index*2-1), .6);
-        })
-    });
+// Appending Sensitive Information to prevent bot sniffing
+function appendPhone(){
+    var p = '71';
+    p += '4-';
+    p += '24';
+    p += '8-';
+    p += '62';
+    p += '69';
+    var t = 'te';
+    t += 'l:';
+    $('#p').text(p).attr('href', `${t+=p}`);
 }
 
 // Ensures all anchor tags linking to another web page, but doesn't open an app, opens in a new window
@@ -95,32 +78,6 @@ function enableMagnific(){
     })
 }
 
-// Appending Sensitive Information to prevent bot sniffing
-function appendEmail(){
-    var e = "don";
-    e += "ald";
-    e += "jtr";
-    e += "an@";
-    e += "gma";
-    e += "il.";
-    e += "com";
-    var m = 'mai';
-    m += 'lto:';
-    $('#e').text(e).attr('href', `${m+=e}?subject=Position%20Available&#58;%20&body=Hi%20Donald&#44;%0A%0A%20I%20read%20your%20resume&#44;%20love%20it&#46;%20%20I%20wanted%20to%20reach%20out%20about%20an%20opportunity%20we%20have%20for%20you&#58;%0A%0A%0AThanks&#44;%0A%0A`)
-}
-// Appending Sensitive Information to prevent bot sniffing
-function appendPhone(){
-    var p = '71';
-    p += '4-';
-    p += '24';
-    p += '8-';
-    p += '62';
-    p += '69';
-    var t = 'te';
-    t += 'l:';
-    $('#p').text(p).attr('href', `${t+=p}`);
-}
-
 
 // Allowing user to close the hamburger button by clicking anywhere on screen
 function allowCollapseHamburger() {
@@ -146,13 +103,16 @@ function allowTouchEvents(){
  * This fixes the issue where if the animation happens after page load, then it will appear
  * on the DOM without regards to any other animations (nullifying libraries: wow.js and animate.css)
  */
+function bindScrollEventHandler(){
+    $(document).scroll(scrollEventHandler);
+}
 // Defining callback function that fires when the page is scrolled
-var scrollEventHandler = function() {
+function scrollEventHandler() {
     if(isScrolledIntoView($('.spinner')[0])) {
         unbindScrollEventHandler();
         beginRotateHeartbeat();
     }
-};
+}
 // Checks if the DOM element has rendered in view of the viewport
 function isScrolledIntoView(domelement) {
     const elemTop = domelement.getBoundingClientRect().top;
@@ -168,10 +128,36 @@ function unbindScrollEventHandler() {
 // Starts the heartbeat to rotate the HTML/CSS icon
 function beginRotateHeartbeat(){
     const $spinner = $('.spinner');
-    window.setTimeout(startSpins,3333,$spinner);
+    const $rotate = $(".txt-rotate");
+    const animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    // Removes conflicting properties created by initial spawn animation
+    $rotate.one(animationEnd, function(){
+        $(this).removeClass('wow slideInDown')
+            .removeAttr('style');
+        window.setTimeout(function(){
+            $rotate.addClass('flipOutY') // duration is 0.75s
+                .one(animationEnd, function() {
+                    $(this).removeClass('flipOutY')
+                        .addClass('rotateIn');
+                    // Start spins after an initial delay
+                    startSpins($spinner);
+                });
+        },2345);
+    });
+
+
     function startSpins(spinner){
         spinner.addClass('spinning');
+        // Sets pulse for the text rotation
+        $rotate.textrotator({
+            animation: "flipCube",
+            separator: " / ",
+            speed: 5555
+        });
+        // Sets pulse for the icon spinning
         window.setInterval(animate, 5555, spinner);
+
         function animate(spinner){
             spinner.hasClass('spinning') ? spinner.removeClass('spinning') : spinner.addClass('spinning');
         }
@@ -303,5 +289,54 @@ function contactFormHandler(){
             .append(icon_ready);
     });
 }
-
-$(document).scroll(scrollEventHandler);
+/**
+ * Applies all animations from the animate.css and wow.js libraries, which apply animations through custom HTML attributes.
+ * These functions result in cleaner HTML, though some animations are still hard coded in.
+ */
+function applyAnimations(){
+    animateElement('section h2', 'slideInUp', .3);
+    animateElement('#skills h3, #about blockquote', 'fadeIn', .3);
+    animateChildren('.about-text',aboutParagraphs);
+    animateChildren('.tpl-alt-tabs',skillsIcons);
+    animateChildren('.ci-parent',contactIcons);
+    animateChildren('.footer-social-links',footerIcons);
+    // Generic helper function that applies an animation to a DOM element
+    function animateElement(element, effect, delay, duration){
+        const $element = $(element);
+        // ES6 default function params are not supported on iOS9 or IE11
+        if (!delay)     delay = 1;
+        if (!duration)  duration = 1;
+        $element.addClass('wow '+effect)
+            .attr({
+                "data-wow-delay": delay+"s",
+                "data-wow-duration": duration+"s"
+            })
+    }
+    // Generic helper function that applies animations to all children of a DOM element
+    function animateChildren(parent, animation){
+        const $parent = $(parent);
+        $parent.each(function(){
+            const $child = $(this).children();
+            $child.each(animation)
+        })
+    }
+    // Reference function for all the paragraphs in the About section
+    function aboutParagraphs(index){
+        animateElement(this, "fadeIn", "0."+(index*2-1), .6);
+    }
+    // Reference function for all the skills icons and their titles
+    function skillsIcons(index){
+        animateElement(this, "flipInX", "0."+(index+2), .4);
+        animateElement($(this).find('p'), "slideInDown", .8, .6);
+    }
+    // Reference function for all the contact-info icons
+    function contactIcons(){
+        animateElement(this, "rollIn", .2, 1.2)
+    }
+    // Reference function for all the footer icons
+    function footerIcons(index){
+        const duration = .6;
+        var delay = (index+1)*duration/2;
+        animateElement(this, "flip", delay,duration);
+    }
+}
