@@ -1,7 +1,7 @@
 <?php
 if($_POST)
 {
-    require_once ('./credentials.php');
+    require_once ('../../server/credentials.php');
 
     $to_Email   	= $email; //Replace with recipient email address
 	$subject        = 'Message from website '.$_SERVER['SERVER_NAME']; //Subject line for emails
